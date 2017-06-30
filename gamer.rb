@@ -1,17 +1,16 @@
 class Gamer
-  attr_accessor :name, :points, :money, :deck, :cards_opened, :check_available, :user_cards
+  attr_accessor :name, :points, :money, :deck, :check_available, :user_cards
 
   def initialize(name, deck)
     @name = name
     @money = 100
     @deck = deck
-    new_game(deck)
+    new_game
   end
 
-  def new_game(deck)
+  def new_game
     make_bet
-    check_available = true
-    cards_opened = false
+    @check_available = true
     @user_cards = []
     get_card(2)
     calculate_points
@@ -25,9 +24,19 @@ class Gamer
     end
   end
 
-  def get_card(n)
+  def add_money(cash = 20)
+    @money += cash
+  end
+
+  def print_cards
+    @user_cards.each{ |card| puts "Name: #{card.name} Points: #{card.count}" }
+
+  end
+
+  def get_card(n=1)
     if @user_cards.size < 3
       @user_cards.concat(deck.get_card(n))
+      calculate_points
     else
       raise 'max cards count reached'
     end
@@ -45,12 +54,8 @@ class Gamer
     end
   end
 
-  def open_cards
-    cards_opened = true
-  end
-
   #пропустить
   def check
-    check_available =false
+    @check_available =false
   end
 end
