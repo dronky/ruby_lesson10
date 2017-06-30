@@ -104,9 +104,8 @@ Put your name:"
         elsif dealer.points > player.points
           puts "#{dealer.name} wins with #{dealer.points} points against #{player.name}'s #{player.points} points"
           dealer.add_money
-          puts "One more time?"
         end
-        puts "One more time?
+      puts "One more time?
 1) - yes
 2) - no"
         user_input = gets.chomp.to_i
@@ -116,6 +115,10 @@ Put your name:"
               deck.create
               player.new_game
               dealer.new_game
+              puts "Check your cards:"
+              player.print_cards
+              puts "Check your points:"
+              puts player.points
               break
             when 2
               abort("Go home")
