@@ -17,7 +17,7 @@ class Gamer
   end
 
   def make_bet
-    if @money - 10 != 0
+    if @money - 10 >= 0
       @money -= 10
     else
       raise 'no more money'
@@ -29,8 +29,7 @@ class Gamer
   end
 
   def print_cards
-    @user_cards.each{ |card| puts "Name: #{card.name} Points: #{card.count}" }
-
+    @user_cards.each {|card| puts "Name: #{card.name} Points: #{card.count}"}
   end
 
   def get_card(n=1)
@@ -56,6 +55,6 @@ class Gamer
 
   #пропустить
   def check
-    @check_available =false
+    @check_available = false
   end
 end
