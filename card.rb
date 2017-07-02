@@ -7,4 +7,8 @@ class Card
     @count = count
   end
 
+  def to_s
+    "Name: #{@name} Points: #{@count}"
+  end
+
 end

@@ -2,7 +2,7 @@ require_relative 'card'
 
 class Deck
 
-  attr_reader :main_deck
+  attr_reader :cards
 
   CARDS = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '9': 9, '10': 10,
            'K+': 10, 'K<3': 10, 'K^': 10, 'K<>': 10,
@@ -14,15 +14,17 @@ class Deck
     create
   end
 
+  #Вызывается еще и при рестарте игры
   def create
-    @main_deck = []
-    CARDS.each {|title, count| @main_deck << Card.new(title, count)}
+    @cards = []
+    CARDS.each {|title, count| @cards << Card.new(title, count)}
   end
 
   def get_card(n = 1)
-    raise "You should create a main deck before adding card" if @main_deck.empty?
-    a = @main_deck.sample(n)
-    @main_deck.delete(a)
+    raise "You should create a main deck before adding card" if @cards.empty?
+    #Можно использовать метод pop
+    a = @cards.sample(n)
+    @cards.delete(a)
     a
   end
 end

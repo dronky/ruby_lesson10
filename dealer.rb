@@ -1,11 +1,7 @@
-require_relative 'gamer'
+require_relative 'user'
 
-class Dealer < Gamer
+class Dealer < User
   def play?
-    if self.points > 18
-      false
-    else
-      true
-    end
+    self.points > 18
   end
 end
